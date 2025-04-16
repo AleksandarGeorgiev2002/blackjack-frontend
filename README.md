@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Blackjack Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Issues](https://img.shields.io/github/issues/<username>/<repository>)
+![Stars](https://img.shields.io/github/stars/<username>/<repository>)
+![Forks](https://img.shields.io/github/forks/<username>/<repository>)
 
-## Available Scripts
+This is the frontend for a Blackjack game. It includes features like user authentication, password recovery, and a user-friendly game interface.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Forgot Password Functionality](#forgot-password-functionality)
+  - [Key Features](#key-features)
+  - [API Endpoint](#api-endpoint)
+- [How to Run](#how-to-run)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **User Authentication**: Log in and manage accounts.
+- **Password Recovery**: Reset passwords via email.
+- **Game Interface**: Play Blackjack with an intuitive UI.
 
-### `npm test`
+## Forgot Password Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The `forgotPasswordHandler.js` file handles password recovery by sending a reset link to the user's email.
 
-### `npm run build`
+### Key Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **User Verification**: Checks if the email exists in the database.
+2. **Token Generation**: Creates a unique token and stores it with an expiration time.
+3. **Email Sending**: Sends a reset link using `nodemailer`.
+4. **Error Handling**: Provides clear error messages for failures.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### API Endpoint
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**POST /forgot-password**
 
-### `npm run eject`
+#### Request Body
+```json
+{
+  "email": "user@example.com"
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Responses
+- **Success**: 
+  ```json
+  {
+    "message": "Password reset link sent to your email."
+  }
+  ```
+- **Error**:
+  ```json
+  {
+    "message": "User not found"
+  }
+  ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## How to Run
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Improvements
 
-## Learn More
+- Use environment variables for sensitive data.
+- Add rate limiting to prevent abuse of the password recovery feature.
+- Improve email service security.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! To contribute:
 
-### Code Splitting
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Commit and push your changes.
+4. Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
